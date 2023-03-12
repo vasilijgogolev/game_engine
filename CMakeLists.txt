@@ -23,7 +23,14 @@ add_subdirectory(third_party)
 add_subdirectory(application)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${ENGINE_WORKING_DIR} ${THIRD_PARTY_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} PUBLIC opengl32 ${THIRD_PARTY_LIBS})
+set(SYSTEM_LIBS)
+if (WIN32)
+    list(APPEND SYSTEM_LIBS opengl32)
+elseif(APPLE)
+    list(APPEND SYSTEM_LIBS "-framework OpenGL")
+endif()
+
+target_link_libraries(${PROJECT_NAME} PUBLIC ${SYSTEM_LIBS} ${THIRD_PARTY_LIBS})
 
 get_target_property(_ENGINE_SOURCES ${PROJECT_NAME} SOURCES)
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/" FILES ${_ENGINE_SOURCES})

@@ -15,8 +15,11 @@ add_subdirectory(zlib-ng)
 message("imported zlib-ng")
 
 #libpng
-set(ZLIB_LIBRARY zlib)
-set(ZLIB_INCLUDE_DIR zlib-ng)
+option(PNG_BUILD_ZLIB "build zlib, do not use find_package" ON)
+option(PNG_SHARED "Build libpng as a shared lib" OFF)
+option(PNG_EXECUTABLES "Build libpng executables" OFF)
+option(PNG_TESTS "Build libpng tests" OFF)
+option(PNG_DEBUG "Enable debug output" OFF)
 add_subdirectory(libpng)
 message("imported libpng")
 
@@ -27,6 +30,6 @@ set(THIRD_PARTY_INCLUDE_DIRS
         PARENT_SCOPE)
 set(THIRD_PARTY_LIBS
         zlib
-        png_shared
+        png_static
         glfw
         PARENT_SCOPE)
