@@ -1,3 +1,9 @@
 [submodule "glfw"]
-	path = glfw
+	path = third_party/glfw
 	url = git@github.com:glfw/glfw.git
+[submodule "libpng"]
+	path = third_party/libpng
+	url = git@github.com:glennrp/libpng.git
+[submodule "third_party/zlib-ng"]
+	path = third_party/zlib-ng
+	url = git@github.com:zlib-ng/zlib-ng.git

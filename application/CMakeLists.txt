@@ -1,4 +1,4 @@
-message("adding application")
+message("importing Engine::Application")
 
 set(MODULE_SOURCES)
 

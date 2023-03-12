@@ -1,15 +1,20 @@
 #pragma once
+#include <string>
+#include <memory>
+#include "GameManager.h"
 
-namespace Application {
+namespace Engine::Application {
 	class App {
 	public:
 		App() = default;
 		~App() = default;
 
-		bool initialize();
-		void run();
+		static bool initialize();
+		static void run();
 
-	private:
-		bool inited = false;
+		static void setGameName(const std::string& _title);
+		static void setGameResolution(int _width, int _height);
+		static void setGameManager(std::unique_ptr<GameManager> _manager);
+		static void terminate();
 	};
 }
